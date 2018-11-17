@@ -48,3 +48,27 @@ body .github-fork-ribbon:before {
     font-size: 50px;
   }
 }
+
+@keyframes InOutWhite {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f9f9f9;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}
+
+@keyframes InOutOrange {
+  0% {
+    background-color: #f5923e;
+  }
+  50% {
+    background-color: #f7a45e;
+  }
+  100% {
+    background-color: #f5923e;
+  }
+}

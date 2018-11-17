@@ -15,6 +15,23 @@
   margin: 0 1px 0 0;
   flex: 1 0 auto;
   padding: 0;
+  transition: all 0.2s;
+}
+
+.component-button.active button {
+  animation: InOutWhite 0.2s;
+}
+
+.component-button.active.orange button {
+  animation: InOutOrange 0.2s;
+}
+
+.component-button button:active {
+  background-color: #f9f9f9;
+}
+
+.component-button button:focus {
+  outline: none;
 }
 
 .component-button:last-child button {
@@ -23,5 +40,14 @@
 
 .component-button.orange button {
   background-color: #f5923e;
+
   color: white;
+}
+
+.component-button.orange button:active {
+  background-color: #f7a45e;
+}
+
+.component-button.component-button.orange button:focus {
+  outline: none;
 }
