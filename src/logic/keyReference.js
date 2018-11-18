@@ -84,6 +84,10 @@ export default function keyReference(keyName) {
       key: "-",
       value: "-",
     },
+    {
+      key: "Backspace",
+      value: "Back",
+    },
   ];
 
   const keyValue = validKeys.filter(
