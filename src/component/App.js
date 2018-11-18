@@ -35,8 +35,11 @@ class App extends React.Component {
   handleKeyDown = keyName => {
     const buttonName = keyReference(keyName);
     if (!buttonName) return false;
-    this.setState({ lastKey: buttonName });
-    this.makeCalculation(buttonName);
+    this.setState({
+      lastKey: buttonName,
+      ...calculate(this.state, buttonName),
+    });
+    // this.makeCalculation(buttonName);
   };
 
   render() {
