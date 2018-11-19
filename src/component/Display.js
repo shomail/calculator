@@ -23,9 +23,7 @@ class Display extends React.Component {
     return (
       <div className="component-display">
         <div className="component-display__result">
-          {(this.props.state.lastKey === "%" && this.props.state.next) ||
-            this.props.state.total ||
-            "0"}
+          {this.props.state.total || "0"}
         </div>
         <div className="component-display__calculation">
           <span>{calculation}</span>
@@ -36,7 +34,6 @@ class Display extends React.Component {
   }
 }
 Display.propTypes = {
-  value: PropTypes.string,
   state: PropTypes.object,
 };
 export default Display;

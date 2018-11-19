@@ -26,12 +26,43 @@ class App extends React.Component {
     const calculation = calculate(this.state, buttonName);
     let history = this.state.history;
 
-    if (!history.length && calculation.total && calculation.operation) {
+    if (!history.length && this.state.total && calculation.operation) {
       history.push(this.state.total);
     }
-    if (!["AC", "=", "+/-"].includes(buttonName)) {
+
+    if (!["AC", "=", "+/-", "+", "-", "x", "÷", "%"].includes(buttonName)) {
       history.push(buttonName);
-    } else if (buttonName === "AC") {
+    }
+
+    if (
+      ["+", "-", "x", "÷"].includes(buttonName) &&
+      this.state.lastKey !== calculation.operation
+    ) {
+      history.push(buttonName);
+    }
+
+    if (buttonName === "%" && this.state.next) {
+      history.push(buttonName);
+    }
+
+    if (buttonName === "+/-") {
+      if (history.length && this.state.next) {
+        history.splice(
+          history.length - this.state.next.length,
+          this.state.next.length,
+        );
+        history = [...history, ...calculation.next.split("")];
+      } else {
+        history.pop();
+        history.push(calculation.total);
+      }
+    }
+
+    if (buttonName === "=" && calculation.next) {
+      history = [...history];
+    }
+
+    if (buttonName === "AC" || (buttonName === "=" && !calculation.next)) {
       history = [];
     }
 
@@ -80,11 +111,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="component-app">
-        <Display
-          state={this.state}
-          handleUndo={this.handleUndo}
-          value={this.state.next || this.state.total || "0"}
-        />
+        <Display state={this.state} handleUndo={this.handleUndo} />
         <ButtonPanel
           clickHandler={this.handleClick}
           lastKey={this.state.lastKey}
